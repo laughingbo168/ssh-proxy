@@ -18,6 +18,23 @@
 - 服务端主机密钥持久化，客户端通过 `known_hosts` 校验
 - 可选来源 IP 白名单
 
+### 编译
+
+需要 Go 1.25+，在项目根目录执行：
+
+```sh
+# Linux x86_64
+GOOS=linux GOARCH=amd64 go build -o ssh-proxy-linux-amd64 ./cmd/ssh-proxy
+
+# Linux arm64
+GOOS=linux GOARCH=arm64 go build -o ssh-proxy-linux-arm64 ./cmd/ssh-proxy
+
+# macOS arm64
+GOOS=darwin GOARCH=arm64 go build -o ssh-proxy-darwin-arm64 ./cmd/ssh-proxy
+```
+
+> 该服务依赖 Unix 的 PTY 伪终端与 setuid 切换用户，仅支持 Linux/macOS 部署，无法在 Windows 上编译运行。
+
 ### 服务端启动
 
 Linux x86_64 示例：
@@ -78,6 +95,23 @@ chmod 600 host_ed25519
 - Built-in `connect` client with SSH/SFTP and password parameters
 - Persistent server host key with client-side `known_hosts` verification
 - Optional source IP allowlist
+
+### Build
+
+Requires Go 1.25+. Run in the project root:
+
+```sh
+# Linux x86_64
+GOOS=linux GOARCH=amd64 go build -o ssh-proxy-linux-amd64 ./cmd/ssh-proxy
+
+# Linux arm64
+GOOS=linux GOARCH=arm64 go build -o ssh-proxy-linux-arm64 ./cmd/ssh-proxy
+
+# macOS arm64
+GOOS=darwin GOARCH=arm64 go build -o ssh-proxy-darwin-arm64 ./cmd/ssh-proxy
+```
+
+> The service relies on Unix PTY pseudo-terminals and setuid user switching, so it supports Linux/macOS deployment only and cannot be built or run on Windows.
 
 ### Start the server
 
