@@ -1,0 +1,5 @@
+listen: "0.0.0.0:2222"
+host_key_path: "./host_ed25519"
+allow_cidrs:
+  - "203.0.113.10/32"
+shell: "/bin/sh"
